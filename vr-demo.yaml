@@ -1,0 +1,65 @@
+apiVersion: v1
+items:
+- apiVersion: replication.storage.openshift.io/v1alpha1
+  kind: VolumeReplication
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"replication.storage.openshift.io/v1alpha1","kind":"VolumeReplication","metadata":{"annotations":{},"name":"rbd-pvc-test","namespace":"default"},"spec":{"autoResync":false,"dataSource":{"apiGroup":"","kind":"PersistentVolumeClaim","name":"rbd-pvc-test"},"replicationState":"primary","volumeReplicationClass":"rbd-volumereplicationclass"}}
+    creationTimestamp: "2023-04-24T09:51:22Z"
+    finalizers:
+    - replication.storage.openshift.io
+    generation: 3
+    name: rbd-pvc-test
+    namespace: default
+    resourceVersion: "25998"
+    uid: d002616f-060d-4c5a-bfb5-27f979197c0f
+  spec:
+    autoResync: false
+    dataSource:
+      apiGroup: ""
+      kind: PersistentVolumeClaim
+      name: rbd-pvc-test
+    dataDestination:
+      context:
+        clusterID: rook-ceph
+        imageFeatures: layering
+        imageFormat: "2"
+        imageName: csi-vol-1bffe5a1-d8b4-4f25-8d4c-6f37462d4f6f
+        journalPool: replicapool
+        pool: replicapool
+        storage.kubernetes.io/csiProvisionerIdentity: 1682332877526-8081-rook-ceph.rbd.csi.ceph.com
+      destination: 0001-0009-rook-ceph-0000000000000002-1bffe5a1-d8b4-4f25-8d4c-6f37462d4f6f
+        
+    replicationHandle: ""
+    replicationState: primary
+    volumeReplicationClass: rbd-volumereplicationclass
+  status:
+    conditions:
+    - lastTransitionTime: "2023-04-24T09:51:24Z"
+      message: ""
+      observedGeneration: 3
+      reason: Demoted
+      status: "True"
+      type: Completed
+    - lastTransitionTime: "2023-04-24T09:57:45Z"
+      message: ""
+      observedGeneration: 3
+      reason: Healthy
+      status: "False"
+      type: Degraded
+    - lastTransitionTime: "2023-04-24T09:57:45Z"
+      message: ""
+      observedGeneration: 3
+      reason: NotResyncing
+      status: "False"
+      type: Resyncing
+    lastCompletionTime: "2023-04-24T09:57:45Z"
+    message: volume is marked secondary
+    observedGeneration: 3
+    state: Secondary
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+

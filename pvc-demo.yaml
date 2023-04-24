@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: example-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+  storageClassName: rook-ceph-block-test
+  dataSourceRef:
+    apiGroup: replication.storage.openshift.io
+    kind: VolumeReplication
+    name: rbd-pvc-test
+  volumeMode: Filesystem
